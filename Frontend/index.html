@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AI Purchase Prediction System</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <span class="logo-icon">🛒</span>
+                <div>
+                    <h1>AI Purchase Prediction</h1>
+                    <p>Smart Shopping Recommendations</p>
+                </div>
+            </div>
+
+            <div class="status">
+                <span class="status-dot"></span>
+                AI Recommendation System
+            </div>
+        </div>
+    </header>
+
+
+    <!-- Main Content -->
+    <main class="container">
+
+        <!-- Introduction -->
+        <section class="hero">
+            <div>
+                <span class="badge">FP-GROWTH POWERED</span>
+
+                <h2>Discover products you may need</h2>
+
+                <p>
+                    Select a product to see two associated products
+                    predicted using association rule mining.
+                </p>
+            </div>
+        </section>
+
+
+        <!-- Search -->
+        <section class="search-section">
+
+            <div class="section-title">
+                <h2>Products</h2>
+                <span id="product-count">Loading...</span>
+            </div>
+
+            <div class="search-box">
+                <span>🔍</span>
+
+                <input
+                    type="text"
+                    id="search-input"
+                    placeholder="Search products..."
+                    autocomplete="off"
+                >
+            </div>
+
+        </section>
+
+
+        <!-- Product Grid -->
+        <section>
+
+            <div id="product-grid" class="product-grid">
+                <!-- Products will be loaded from the database -->
+            </div>
+
+            <div id="loading" class="loading">
+                Loading products...
+            </div>
+
+            <div id="no-products" class="no-products hidden">
+                No products found.
+            </div>
+
+        </section>
+
+
+        <!-- Selected Product -->
+        <section id="selected-section" class="selected-section hidden">
+
+            <div class="section-title">
+                <h2>Selected Product</h2>
+            </div>
+
+            <div id="selected-product"></div>
+
+        </section>
+
+
+        <!-- Recommendations -->
+        <section id="recommendation-section" class="recommendation-section hidden">
+
+            <div class="recommendation-heading">
+
+                <div>
+                    <span class="badge recommendation-badge">
+                        AI RECOMMENDATIONS
+                    </span>
+
+                    <h2>Products you may also need</h2>
+
+                    <p>
+                        Based on FP-Growth association rules from the
+                        transaction dataset.
+                    </p>
+                </div>
+
+            </div>
+
+            <div id="recommendation-grid" class="recommendation-grid">
+                <!-- Recommendations will appear here -->
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+
+        <p>
+            AI Purchase Prediction System
+        </p>
+
+        <span>
+            Association Rule Mining • Apriori • FP-Growth • ECLAT
+        </span>
+
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>

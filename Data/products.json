@@ -1,0 +1,457 @@
+[
+  {
+    "id": 1,
+    "name": "Almonds",
+    "brand": "Happilo 100% Natural Premium Californian Almonds",
+    "category": "Dry Fruits",
+    "image": "almonds.jpg"
+  },
+  {
+    "id": 2,
+    "name": "Atta",
+    "brand": "Aashirvaad Shudh Chakki Atta",
+    "category": "Staples",
+    "image": "atta.jpg"
+  },
+  {
+    "id": 3,
+    "name": "Bath Soap",
+    "brand": "Dove Cream Beauty Bathing Bar",
+    "category": "Personal Care",
+    "image": "bath_soap.jpg"
+  },
+  {
+    "id": 4,
+    "name": "Biscuits",
+    "brand": "Britannia Good Day Butter Cookies",
+    "category": "Snacks",
+    "image": "biscuits.jpg"
+  },
+  {
+    "id": 5,
+    "name": "Bread",
+    "brand": "Britannia 100% Whole Wheat Bread",
+    "category": "Bakery",
+    "image": "bread.jpg"
+  },
+  {
+    "id": 6,
+    "name": "Butter",
+    "brand": "Amul Pasteurised Butter",
+    "category": "Dairy",
+    "image": "butter.jpg"
+  },
+  {
+    "id": 7,
+    "name": "Cashews",
+    "brand": "Happilo Premium Whole Cashew Nuts",
+    "category": "Dry Fruits",
+    "image": "cashews.jpg"
+  },
+  {
+    "id": 8,
+    "name": "Cereal Bars",
+    "brand": "Yoga Bar Protein Bar",
+    "category": "Snacks",
+    "image": "cereal_bars.jpg"
+  },
+  {
+    "id": 9,
+    "name": "Chana Dal",
+    "brand": "Tata Sampann Chana Dal",
+    "category": "Pulses",
+    "image": "chana_dal.jpg"
+  },
+  {
+    "id": 10,
+    "name": "Cheese",
+    "brand": "Amul Cheese Slices",
+    "category": "Dairy",
+    "image": "cheese.jpg"
+  },
+  {
+    "id": 11,
+    "name": "Chia Seeds",
+    "brand": "True Elements Raw Chia Seeds",
+    "category": "Healthy Foods",
+    "image": "chia_seeds.jpg"
+  },
+  {
+    "id": 12,
+    "name": "Chocolate",
+    "brand": "Cadbury Dairy Milk Chocolate",
+    "category": "Snacks",
+    "image": "chocolate.jpg"
+  },
+  {
+    "id": 13,
+    "name": "Coffee",
+    "brand": "Bru Instant Coffee",
+    "category": "Beverages",
+    "image": "coffee.jpg"
+  },
+  {
+    "id": 14,
+    "name": "Conditioner",
+    "brand": "Dove Daily Shine Conditioner",
+    "category": "Personal Care",
+    "image": "conditioner.jpg"
+  },
+  {
+    "id": 15,
+    "name": "Cooking Oil",
+    "brand": "Fortune Sunlite Refined Sunflower Oil",
+    "category": "Staples",
+    "image": "cooking_oil.jpg"
+  },
+  {
+    "id": 16,
+    "name": "Coriander Powder",
+    "brand": "Everest Coriander Powder",
+    "category": "Spices",
+    "image": "coriander_powder.jpg"
+  },
+  {
+    "id": 17,
+    "name": "Corn Flakes",
+    "brand": "Kellogg's Corn Flakes Original",
+    "category": "Breakfast",
+    "image": "corn_flakes.jpg"
+  },
+  {
+    "id": 18,
+    "name": "Cumin Seeds",
+    "brand": "Tata Sampann Cumin Seeds",
+    "category": "Spices",
+    "image": "cumin_seeds.jpg"
+  },
+  {
+    "id": 19,
+    "name": "Curd",
+    "brand": "Amul Masti Dahi",
+    "category": "Dairy",
+    "image": "curd.jpg"
+  },
+  {
+    "id": 20,
+    "name": "Dates",
+    "brand": "Happilo Premium International Omani Dates",
+    "category": "Dry Fruits",
+    "image": "dates.jpg"
+  },
+  {
+    "id": 21,
+    "name": "Detergent Powder",
+    "brand": "Surf Excel Matic Detergent Powder",
+    "category": "Household",
+    "image": "detergent_powder.jpg"
+  },
+  {
+    "id": 22,
+    "name": "Dishwash Bar",
+    "brand": "Vim Dishwash Bar",
+    "category": "Household",
+    "image": "dishwash_bar.jpg"
+  },
+  {
+    "id": 23,
+    "name": "Dishwash Liquid",
+    "brand": "Vim Dishwash Liquid",
+    "category": "Household",
+    "image": "dishwash_liquid.jpg"
+  },
+  {
+    "id": 24,
+    "name": "Eggs",
+    "brand": "Eggo White Eggs",
+    "category": "Dairy & Eggs",
+    "image": "eggs.jpg"
+  },
+  {
+    "id": 25,
+    "name": "Fabric Softener",
+    "brand": "Comfort Fabric Conditioner",
+    "category": "Household",
+    "image": "fabric_softener.jpg"
+  },
+  {
+    "id": 26,
+    "name": "Face Wash",
+    "brand": "Himalaya Purifying Neem Face Wash",
+    "category": "Personal Care",
+    "image": "face_wash.jpg"
+  },
+  {
+    "id": 27,
+    "name": "Flax Seeds",
+    "brand": "True Elements Flax Seeds",
+    "category": "Healthy Foods",
+    "image": "flax_seeds.jpg"
+  },
+  {
+    "id": 28,
+    "name": "Floor Cleaner",
+    "brand": "Lizol Floor Cleaner",
+    "category": "Household",
+    "image": "floor_cleaner.jpg"
+  },
+  {
+    "id": 29,
+    "name": "Garam Masala",
+    "brand": "Everest Garam Masala",
+    "category": "Spices",
+    "image": "garam_masala.jpg"
+  },
+  {
+    "id": 30,
+    "name": "Garbage Bags",
+    "brand": "Pigeon Garbage Bags",
+    "category": "Household",
+    "image": "garbage_bags.jpg"
+  },
+  {
+    "id": 31,
+    "name": "Glass Cleaner",
+    "brand": "Colin Glass Cleaner",
+    "category": "Household",
+    "image": "glass_cleaner.jpg"
+  },
+  {
+    "id": 32,
+    "name": "Green Tea",
+    "brand": "Lipton Green Tea",
+    "category": "Beverages",
+    "image": "green_tea.jpg"
+  },
+  {
+    "id": 33,
+    "name": "Handwash",
+    "brand": "Dettol Liquid Handwash",
+    "category": "Personal Care",
+    "image": "handwash.jpg"
+  },
+  {
+    "id": 34,
+    "name": "Honey",
+    "brand": "Dabur Honey",
+    "category": "Staples",
+    "image": "honey.jpg"
+  },
+  {
+    "id": 35,
+    "name": "Instant Soup",
+    "brand": "Knorr Instant Soup",
+    "category": "Ready to Eat",
+    "image": "instant_soup.jpg"
+  },
+  {
+    "id": 36,
+    "name": "Jam",
+    "brand": "Kissan Mixed Fruit Jam",
+    "category": "Breakfast",
+    "image": "jam.jpg"
+  },
+  {
+    "id": 37,
+    "name": "Kitchen Towels",
+    "brand": "Scotch-Brite Kitchen Towels",
+    "category": "Household",
+    "image": "kitchen_towels.jpg"
+  },
+  {
+    "id": 38,
+    "name": "Masoor Dal",
+    "brand": "Tata Sampann Masoor Dal",
+    "category": "Pulses",
+    "image": "masoor_dal.jpg"
+  },
+  {
+    "id": 39,
+    "name": "Mayonnaise",
+    "brand": "Veeba Eggless Mayonnaise",
+    "category": "Condiments",
+    "image": "mayonnaise.jpg"
+  },
+  {
+    "id": 40,
+    "name": "Milk",
+    "brand": "Amul Taaza Toned Milk",
+    "category": "Dairy",
+    "image": "milk.jpg"
+  },
+  {
+    "id": 41,
+    "name": "Moong Dal",
+    "brand": "Tata Sampann Moong Dal",
+    "category": "Pulses",
+    "image": "moong_dal.jpg"
+  },
+  {
+    "id": 42,
+    "name": "Muesli",
+    "brand": "Yoga Bar Muesli",
+    "category": "Breakfast",
+    "image": "muesli.jpg"
+  },
+  {
+    "id": 43,
+    "name": "Noodles",
+    "brand": "Maggi 2-Minute Masala Noodles",
+    "category": "Ready to Eat",
+    "image": "noodles.jpg"
+  },
+  {
+    "id": 44,
+    "name": "Oats",
+    "brand": "Saffola Oats",
+    "category": "Breakfast",
+    "image": "oats.jpg"
+  },
+  {
+    "id": 45,
+    "name": "Paneer",
+    "brand": "Amul Fresh Paneer",
+    "category": "Dairy",
+    "image": "paneer.jpg"
+  },
+  {
+    "id": 46,
+    "name": "Pasta",
+    "brand": "Bambino Macaroni Pasta",
+    "category": "Staples",
+    "image": "pasta.jpg"
+  },
+  {
+    "id": 47,
+    "name": "Popcorn",
+    "brand": "Act II Classic Salted Popcorn",
+    "category": "Snacks",
+    "image": "popcorn.jpg"
+  },
+  {
+    "id": 48,
+    "name": "Potato Chips",
+    "brand": "Lay's Classic Salted Potato Chips",
+    "category": "Snacks",
+    "image": "potato_chips.jpg"
+  },
+  {
+    "id": 49,
+    "name": "Rajma",
+    "brand": "Tata Sampann Rajma",
+    "category": "Pulses",
+    "image": "rajma.jpg"
+  },
+  {
+    "id": 50,
+    "name": "Ready To Eat Poha",
+    "brand": "MTR Ready To Eat Poha",
+    "category": "Ready to Eat",
+    "image": "ready_to_eat_poha.jpg"
+  },
+  {
+    "id": 51,
+    "name": "Red Chilli Powder",
+    "brand": "Everest Red Chilli Powder",
+    "category": "Spices",
+    "image": "red_chilli_powder.jpg"
+  },
+  {
+    "id": 52,
+    "name": "Rice",
+    "brand": "India Gate Basmati Rice",
+    "category": "Staples",
+    "image": "rice.jpg"
+  },
+  {
+    "id": 53,
+    "name": "Salt",
+    "brand": "Tata Salt",
+    "category": "Staples",
+    "image": "salt.jpg"
+  },
+  {
+    "id": 54,
+    "name": "Shampoo",
+    "brand": "Dove Daily Shine Shampoo",
+    "category": "Personal Care",
+    "image": "shampoo.jpg"
+  },
+  {
+    "id": 55,
+    "name": "Sugar",
+    "brand": "Tata Sugar",
+    "category": "Staples",
+    "image": "sugar.jpg"
+  },
+  {
+    "id": 56,
+    "name": "Surface Cleaner",
+    "brand": "Harpic Surface Cleaner",
+    "category": "Household",
+    "image": "surface_cleaner.jpg"
+  },
+  {
+    "id": 57,
+    "name": "Tea",
+    "brand": "Tata Tea Gold",
+    "category": "Beverages",
+    "image": "tea.jpg"
+  },
+  {
+    "id": 58,
+    "name": "Tissue Paper",
+    "brand": "Origami Tissue Paper",
+    "category": "Household",
+    "image": "tissue_paper.jpg"
+  },
+  {
+    "id": 59,
+    "name": "Toilet Cleaner",
+    "brand": "Harpic Toilet Cleaner",
+    "category": "Household",
+    "image": "toilet_cleaner.jpg"
+  },
+  {
+    "id": 60,
+    "name": "Tomato Ketchup",
+    "brand": "Kissan Fresh Tomato Ketchup",
+    "category": "Condiments",
+    "image": "tomato_ketchup.jpg"
+  },
+  {
+    "id": 61,
+    "name": "Tomato Puree",
+    "brand": "Kissan Tomato Puree",
+    "category": "Condiments",
+    "image": "tomato_puree.jpg"
+  },
+  {
+    "id": 62,
+    "name": "Toor Dal",
+    "brand": "Tata Sampann Toor Dal",
+    "category": "Pulses",
+    "image": "toor_dal.jpg"
+  },
+  {
+    "id": 63,
+    "name": "Toothbrush",
+    "brand": "Colgate ZigZag Toothbrush",
+    "category": "Personal Care",
+    "image": "toothbrush.jpg"
+  },
+  {
+    "id": 64,
+    "name": "Toothpaste",
+    "brand": "Colgate Strong Teeth Toothpaste",
+    "category": "Personal Care",
+    "image": "toothpaste.jpg"
+  },
+  {
+    "id": 65,
+    "name": "Turmeric",
+    "brand": "Everest Turmeric Powder",
+    "category": "Spices",
+    "image": "turmeric.jpg"
+  }
+]
