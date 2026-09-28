@@ -1,7 +1,6 @@
 const API_BASE = "";
 
 let allProducts = [];
-let cart = [];
 
 
 /* =========================
@@ -39,6 +38,7 @@ async function loadProducts() {
 
         loading.textContent =
             "Unable to connect to the recommendation system.";
+
     }
 }
 
@@ -76,7 +76,7 @@ function displayProducts(products) {
         card.innerHTML = `
             <div class="product-image">
                 <img
-                    src="/images/${product.image}"
+                    src="../images/${product.image}"
                     alt="${product.name}"
                     onerror="this.style.display='none'"
                 >
@@ -111,38 +111,15 @@ function displayProducts(products) {
 
 
 /* =========================
-   SELECT / ADD PRODUCT
+   SELECT PRODUCT
 ========================= */
 
 async function selectProduct(product) {
 
-    addToCart(product);
-
-}
-
-
-/* =========================
-   ADD TO CART
-========================= */
-
-async function addToCart(product) {
-
-    // Prevent duplicate products
-    if (
-        cart.some(
-            item => item.name === product.name
-        )
-    ) {
-        showSelectedProduct(product);
-        await getRecommendations();
-        return;
-    }
-
-    cart.push(product);
-
     showSelectedProduct(product);
 
-    await getRecommendations();
+    await getRecommendations(product.name);
+
 }
 
 
@@ -159,10 +136,6 @@ function showSelectedProduct(product) {
         document.getElementById("selected-product");
 
     section.classList.remove("hidden");
-
-    const cartNames = cart.map(
-        item => item.name
-    );
 
     container.innerHTML = `
 
@@ -181,7 +154,7 @@ function showSelectedProduct(product) {
             <div>
 
                 <div class="selected-label">
-                    Added to Cart
+                    Selected Product
                 </div>
 
                 <h3>
@@ -194,11 +167,6 @@ function showSelectedProduct(product) {
 
                 <p>
                     ${product.category}
-                </p>
-
-                <p>
-                    Cart:
-                    ${cartNames.join(", ")}
                 </p>
 
             </div>
@@ -218,7 +186,7 @@ function showSelectedProduct(product) {
    GET RECOMMENDATIONS
 ========================= */
 
-async function getRecommendations() {
+async function getRecommendations(productName) {
 
     const recommendationSection =
         document.getElementById(
@@ -253,9 +221,7 @@ async function getRecommendations() {
                 },
 
                 body: JSON.stringify({
-                    cart: cart.map(
-                        item => item.name
-                    )
+                    product: productName
                 })
             }
         );
@@ -282,6 +248,7 @@ async function getRecommendations() {
                 Unable to load recommendations.
             </div>
         `;
+
     }
 }
 
@@ -308,8 +275,8 @@ function displayRecommendations(
 
         recommendationGrid.innerHTML = `
             <div class="loading">
-                No reliable recommendations found
-                for this cart.
+                No associated products were found
+                for this selection.
             </div>
         `;
 
@@ -374,6 +341,7 @@ function displayRecommendations(
                     <div class="brand">
                         ${product.brand}
                     </div>
+
 
                     <span class="product-category">
                         ${product.category}

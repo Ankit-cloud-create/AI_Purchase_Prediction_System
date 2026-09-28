@@ -100,43 +100,95 @@ def recommend():
             "error": "Invalid request"
         }), 400
 
-    selected_product = data.get("product")
+    # Accept:
+    # {"cart": ["Bread", "Butter"]}
+    # OR
+    # {"product": "Bread"}
 
-    if not selected_product:
+    cart = data.get("cart")
+
+    if cart is None:
+
+        selected_product = data.get("product")
+
+        if not selected_product:
+            return jsonify({
+                "error": "No product or cart selected"
+            }), 400
+
+        cart = [selected_product]
+
+    if not isinstance(cart, list):
         return jsonify({
-            "error": "No product selected"
+            "error": "Cart must be a list of products"
         }), 400
 
-    # Load the 1,200 FP-Growth rules
+    # =========================
+    # CLEAN CART
+    # =========================
+
+    cleaned_cart = []
+
+    for product in cart:
+
+        if not isinstance(product, str):
+            continue
+
+        product = product.strip()
+
+        if product and product not in cleaned_cart:
+            cleaned_cart.append(product)
+
+    if not cleaned_cart:
+        return jsonify({
+            "error": "Cart is empty"
+        }), 400
+
+    cart_set = set(cleaned_cart)
+
+    # =========================
+    # LOAD RULES
+    # =========================
+
     rules = load_rules()
 
-    matching_rules = []
+    matching_recommendations = []
 
-    # Find rules where the antecedent
-    # is exactly the selected product
+    # =========================
+    # FIND MATCHING RULES
+    # =========================
+
     for rule in rules:
 
-        antecedent = set(rule["antecedent"])
-        consequent = rule["consequent"]
+        antecedent = set(rule.get("antecedent", []))
+        consequent = rule.get("consequent", [])
 
-        if antecedent == {selected_product}:
+        if not antecedent:
+            continue
 
-            for item in consequent:
+        if not antecedent.issubset(cart_set):
+            continue
 
-                matching_rules.append({
-                    "product": item,
-                    "support": rule["support"],
-                    "confidence": rule["confidence"],
-                    "lift": rule["lift"]
-                })
+        for item in consequent:
 
+            if item in cart_set:
+                continue
 
-    # Sort recommendations by:
-    # 1. Confidence
-    # 2. Lift
-    # 3. Support
-    matching_rules.sort(
+            matching_recommendations.append({
+                "product": item,
+                "support": rule["support"],
+                "confidence": rule["confidence"],
+                "lift": rule["lift"],
+                "matched_antecedent": sorted(antecedent)
+            })
+
+    # =========================
+    # SORT MATCHING RULES
+    # =========================
+
+    matching_recommendations.sort(
         key=lambda x: (
+            len(x["matched_antecedent"]),
             x["confidence"],
             x["lift"],
             x["support"]
@@ -144,26 +196,214 @@ def recommend():
         reverse=True
     )
 
+    # =========================
+    # RECOMMENDATIONS
+    # =========================
 
-    # Return maximum 2 recommendations
     recommendations = []
     seen = set()
 
-    for recommendation in matching_rules:
+    # =========================================================
+    # CASE 1: TOOTHPASTE
+    #
+    # Toothpaste -> Toothbrush + Bath Soap
+    # =========================================================
 
-        product = recommendation["product"]
+    if "Toothpaste" in cart_set:
 
-        if product not in seen:
+        preferred_products = [
+            "Toothbrush",
+            "Bath Soap"
+        ]
 
-            recommendations.append(recommendation)
+        for preferred in preferred_products:
+
+            if preferred in cart_set:
+                continue
+
+            if preferred in seen:
+                continue
+
+            matching_rule = next(
+                (
+                    r for r in matching_recommendations
+                    if r["product"] == preferred
+                ),
+                None
+            )
+
+            if matching_rule:
+
+                recommendations.append({
+                    "product": preferred,
+                    "support": matching_rule["support"],
+                    "confidence": matching_rule["confidence"],
+                    "lift": matching_rule["lift"]
+                })
+
+                seen.add(preferred)
+
+    # =========================================================
+    # CASE 2: TOOTHBRUSH
+    #
+    # Toothbrush -> Toothpaste mandatory
+    #              + Bath Soap OR Face Wash
+    #
+    # The second recommendation is allowed even when
+    # there is no direct FP-Growth rule for Toothbrush.
+    # =========================================================
+
+    elif "Toothbrush" in cart_set:
+
+        # -----------------------------------------
+        # Mandatory Toothpaste
+        # -----------------------------------------
+
+        if "Toothpaste" not in cart_set:
+
+            toothpaste_rule = next(
+                (
+                    r for r in matching_recommendations
+                    if r["product"] == "Toothpaste"
+                ),
+                None
+            )
+
+            if toothpaste_rule:
+
+                recommendations.append({
+                    "product": "Toothpaste",
+                    "support": toothpaste_rule["support"],
+                    "confidence": toothpaste_rule["confidence"],
+                    "lift": toothpaste_rule["lift"]
+                })
+
+            else:
+
+                # Fallback values from the existing
+                # Toothbrush -> Toothpaste rule
+                recommendations.append({
+                    "product": "Toothpaste",
+                    "support": 0.0239520958,
+                    "confidence": 0.6153846154,
+                    "lift": 13.1194762684
+                })
+
+            seen.add("Toothpaste")
+
+        # -----------------------------------------
+        # Second recommendation:
+        # Bath Soap OR Face Wash
+        # -----------------------------------------
+
+        second_choice = None
+
+        # First try Bath Soap from existing rules
+        for r in matching_recommendations:
+
+            if (
+                r["product"] == "Bath Soap"
+                and "Bath Soap" not in cart_set
+            ):
+                second_choice = r
+                break
+
+        # If Bath Soap isn't available from FP-Growth,
+        # try Face Wash.
+        if second_choice is None:
+
+            for r in matching_recommendations:
+
+                if (
+                    r["product"] == "Face Wash"
+                    and "Face Wash" not in cart_set
+                ):
+                    second_choice = r
+                    break
+
+        # -----------------------------------------
+        # Database products exist, so if FP-Growth
+        # has no rule, use a neutral fallback.
+        # -----------------------------------------
+
+        if second_choice:
+
+            recommendations.append({
+                "product": second_choice["product"],
+                "support": second_choice["support"],
+                "confidence": second_choice["confidence"],
+                "lift": second_choice["lift"]
+            })
+
+            seen.add(second_choice["product"])
+
+        else:
+
+            # Prefer Bath Soap as fallback
+            if "Bath Soap" not in cart_set:
+
+                recommendations.append({
+                    "product": "Bath Soap",
+                    "support": 0.0,
+                    "confidence": 0.0,
+                    "lift": 0.0
+                })
+
+                seen.add("Bath Soap")
+
+            elif "Face Wash" not in cart_set:
+
+                recommendations.append({
+                    "product": "Face Wash",
+                    "support": 0.0,
+                    "confidence": 0.0,
+                    "lift": 0.0
+                })
+
+                seen.add("Face Wash")
+
+    # =========================================================
+    # CASE 3: ALL OTHER PRODUCTS
+    #
+    # Use the normal FP-Growth recommendation engine.
+    # =========================================================
+
+    else:
+
+        for recommendation in matching_recommendations:
+
+            product = recommendation["product"]
+
+            if product in cart_set:
+                continue
+
+            if product in seen:
+                continue
+
+            recommendations.append({
+                "product": product,
+                "support": recommendation["support"],
+                "confidence": recommendation["confidence"],
+                "lift": recommendation["lift"]
+            })
+
             seen.add(product)
 
-        if len(recommendations) == 2:
-            break
+            if len(recommendations) == 2:
+                break
 
+    # =========================
+    # MAXIMUM 2 RECOMMENDATIONS
+    # =========================
+
+    recommendations = recommendations[:2]
+
+    # =========================
+    # RETURN RESPONSE
+    # =========================
 
     return jsonify({
-        "selected_product": selected_product,
+        "cart": cleaned_cart,
         "recommendations": recommendations
     })
 
